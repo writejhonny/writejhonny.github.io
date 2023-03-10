@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Subir archivo de texto</title>
+	<link rel="stylesheet" href="write.css">
+</head>
+<body>
+    <a href="../app.html"><button class ="back">volver</button></a>
+     <div class="d2"><img src="../img/face.gif" class="i2" alt=""></div>
+     
+
+	<form>
+		<input type="file" id="archivo_texto" accept=".txt">
+		<input type="button" value="Leer archivo" onclick="leerTexto()">
+	</form>
+	<div id="contenido"></div>
+	<script src="https://code.responsivevoice.org/responsivevoice.js?key=8Ei0eiEv"></script>
+	<script>
+		function leerTexto() {
+			var archivo = document.getElementById("archivo_texto").files[0];
+			if (!archivo) {
+				alert("No se ha seleccionado ningún archivo.");
+				return;
+			}
+			var lector = new FileReader();
+			lector.readAsText(archivo);
+			lector.onload = function(evt) {
+				var contenido = evt.target.result;
+				// Dividir el contenido en oraciones o párrafos
+				var oraciones = contenido.split(".");
+				// Seleccionar una oración aleatoria
+				var oracion_aleatoria = oraciones[Math.floor(Math.random() * oraciones.length)];
+				// Leer la oración en voz alta con ResponsiveVoice
+				responsiveVoice.speak(oracion_aleatoria, "Spanish Female");
+				document.getElementById("contenido").innerHTML = oracion_aleatoria;
+			}
+		}
+	</script>
+</body>
+</html>
+

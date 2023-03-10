@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>carga</title>
+</head>
+<body>
+    <a href="./app.html"><section class="carga"><img src="./img/g0R9.gif" id="c1" alt=""></section></a>
+    <div class="alert">Presiona</div>
+    <script>
+        const texto = document.querySelector('.alert');
+const textoCompleto = texto.innerHTML;
+texto.innerHTML = '';
+
+let i = 0;
+const escribirTexto = setInterval(() => {
+  texto.innerHTML += textoCompleto.charAt(i);
+  i++;
+  if (i > textoCompleto.length) {
+    clearInterval(escribirTexto);
+  }
+}, 50);
+
+    </script>
+</body>
+</html>

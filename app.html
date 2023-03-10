@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mink, el cuenta cuentos matemático</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css">
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script src="js/jquery.mobile-1.4.5.min.js"></script>
+    <script src="https://code.responsivevoice.org/responsivevoice.js?key=jBRExLRn"></script>
+    <link rel="stylesheet" href="app.css">
+</head>
+<body>
+
+<!-- Contenido de la aplicación aquí -->
+<div data-role="page" class="nav0" id="inicio">
+    <div data-role="header" class="nav1">
+    <a href="./doc/uso.html" class="mink"><h1 class="h1">Mink</h1></a>
+   </div></a>
+    </div>
+   
+    </div>
+    <div data-role="content">
+        <div class="ming1"><img src="img/face.gif" alt="" srcset="" id="ming"></div>
+        <p>Escribele a Mink qué cuento quieres que te cuente:</p>
+       
+        <input type="text" id="input-cuento" placeholder="Ejemplo: 'Cuentame un cuento de suma'" />
+        <button id="btn-cuento" onclick="generarCuento()">Contar</button>
+        <div id="respuesta-cuento"></div>
+        <br />
+        <button id="btn-preguntar" onclick="preguntar()">Preguntar</button>
+        <div id="pregunta"></div>
+        <input type="text" id="respuesta" placeholder="Escribe tu respuesta aquí" />
+        <button id="btn-responder" onclick="responder()">Responder</button>
+        <div id="respuesta-respuesta"></div>
+        <br />
+        <p>Selecciona un idioma para Mink:</p>
+        <select id="select-idioma">
+            <option value="Spanish Female">Español</option>
+            <option value="US English Female">Inglés</option>
+            <option value="French Female">Francés</option>
+            <option value="German Female">Alemán</option>
+            <option value="Italian Female">Italiano</option>
+        </select>
+        <button id="btn-cambiar-idioma" onclick="cambiarIdioma()">Cambiar idioma</button>
+        <a href="subir texto/writeC.html" class="subir"><button onclick="responsiveVoice.speak(contenidoTexto, idioma)">Subir cuentos</button></a>
+    </div>
+</div>
+
+<script>
+    var respuestaCorrecta = "";
+    var idioma = "Spanish Female";
+
+    // Generar cuento matemático al azar
+    function generarCuento() {
+        var comando = document.getElementById("input-cuento").value.toLowerCase();
+        var respuesta = "";
+
+        if (comando.includes("suma")) {
+            respuesta = "Imagínense a Ana, una niña muy lista en matemáticas, en un pequeño pueblo llamado Sumaville. Un día, el alcalde convocó a todos los niños y niñas para un concurso de suma del 1 al 100. ¡Qué desafío tan grande! Pero Ana no se asustó, no señor. Ella pensó y pensó, y decidió agrupar los números de 10 en 10. Empezó con 1 a 10, lo sumó todo y obtuvo 55. Luego hizo lo mismo con 11 a 20, 21 a 30, y así sucesivamente, hasta llegar a 91 a 100. Finalmente, ¡Ana sumó todos los resultados de los grupos! Y adivinen qué, mis amigos... ¡Obtuvo el resultado correcto de la suma de 1 a 100 en menos tiempo que cualquier otro niño!, Así que ya lo saben, niños y niñas, si quieren ser tan rápidos como Ana en la suma, ¡piensen en agrupar los números! Y recuerden, ¡la matemática es divertida!, La suma total de los números del 1 al 100 es 5.050. Ana lo logró sumando los números de 10 en 10 y luego sumando los resultados de cada grupo. ¡Una estrategia inteligente y eficiente!. ¿Cuál fue el resultado final de la suma que hizo Ana, sino lo recuerdas puedes repetir el cuento en el botón contar?";
+            respuestaCorrecta = "5.050";
+        } else if (comando.includes("resta")) {
+            respuesta = "Había una vez un granjero que tenía 10 manzanas y 5 peras. Se dio cuenta de que las peras estaban muy maduras y decidió regalar dos a su amigo. ¿Cuántas frutas le quedan al granjero?";
+            respuestaCorrecta = "13";
+        } else if (comando.includes("multiplicación"))
+{
+respuesta = "Niños y niñas! Les voy a contar una historia sobre un pequeño pajarito llamado Tito. Tito era un pájaro muy listo y quería aprender todo sobre las matemáticas. Un día, Tito aprendió algo muy emocionante: ¡la multiplicación!, Tito estaba muy emocionado de probar lo que había aprendido. Así que decidió ir a buscar a sus amigos los gusanos. Él sabía que los gusanos se multiplicaban rápidamente, ¡y quería verlo con sus propios ojos!, Entonces Tito encontró un gusano y lo puso en una caja. Al día siguiente, el gusano se había multiplicado por dos y había dos gusanos en la caja. Al siguiente día, los dos gusanos se habían multiplicado por dos de nuevo y había cuatro gusanos en la caja. ¡Y así sucesivamente!, Tito se emocionó tanto con lo que había aprendido sobre la multiplicación, que fue a contarles a todos sus amigos pájaros. Les dijo: ¡Amigos, amigos! ¡Aprendí algo muy emocionante sobre la multiplicación! Si tienes un gusano, ¡y lo multiplicas por dos cada día, tendrás muchos gusanos en muy poco tiempo!. Los amigos de Tito se emocionaron tanto, que empezaron a buscar gusanos para multiplicarlos. Y pronto, ¡todos los pájaros tenían muchas cajas llenas de gusanos multiplicados!, Así que ya lo saben, niños y niñas, si quieren aprender sobre la multiplicación, ¡busquen algunos gusanos! Y recuerden, ¡las matemáticas son divertidas!. ¿Cuántos gusanos se multiplicaron en 4 días, si cada dia multiplico 1 por 2?";
+respuestaCorrecta = "8";
+} else if (comando.includes("división")) {
+respuesta = "Había una vez un reino donde la gente vivía feliz y tranquila, pero había un problema: no podían dividir la comida de manera justa entre todos los habitantes. El rey estaba preocupado y decidió convocar a su consejero más sabio para que le ayudara a encontrar una solución. El consejero pensó y pensó y finalmente propuso organizar una competencia de división. Todos los habitantes del reino debían participar y el que pudiera dividir la comida de manera más justa sería nombrado el Gran Divisor. Los participantes se reunieron en la plaza del pueblo, cada uno con una canasta llena de comida. El rey les explicó las reglas del concurso y les dio la señal para empezar. Uno de los participantes, un anciano muy sabio, decidió dividir la comida en partes iguales. Cogió su canasta y empezó a dividir las manzanas, las peras y las naranjas en partes iguales. Dividió todo en cuatro partes iguales y se aseguró de que todas las partes fueran iguales en tamaño y cantidad. Otro participante, un joven agricultor, decidió hacer algo diferente. Dividió su canasta de comida en partes desiguales, pero calculó la cantidad de cada parte para que todas sumaran lo mismo. Por ejemplo, en lugar de dividir las manzanas en partes iguales, dividió las manzanas grandes en dos partes y las pequeñas en tres partes. El rey y el consejero observaron atentamente a todos los participantes y finalmente llegaron a una decisión. El anciano que había dividido la comida en partes iguales fue nombrado el Gran Divisor. Todos los habitantes del reino aplaudieron y se alegraron de que se hubiera encontrado una solución justa para dividir la comida. Desde ese día en adelante, cada vez que los habitantes del reino tenían que dividir la comida, recordaban la competencia de división y seguían el ejemplo del anciano sabio y justo.. ¿En cuántas parte dividío la comida el anciano sabio a. 2 parte, o b. 4 partes, escribe la respuesta correcta?";
+respuestaCorrecta = "4 partes";
+} else {
+respuesta = "Lo siento, no entiendo lo que me pides. Por favor, dime qué cuento quieres que te cuente. Puedes pedirme un cuento de suma, resta, multiplicación o división.";
+}
+
+    document.getElementById("respuesta-cuento").innerHTML = respuesta;
+    responsiveVoice.speak(respuesta, idioma);
+}
+
+// Hacer una pregunta matemática al azar
+function preguntar() {
+    var opciones = ["suma", "resta", "multiplicación", "división"];
+    var operacion = opciones[Math.floor(Math.random() * opciones.length)];
+    var num1 = Math.floor(Math.random() * 10) + 1;
+    var num2 = Math.floor(Math.random() * 10) + 1;
+    var pregunta = "";
+
+    if (operacion == "suma") {
+        pregunta = "¿Cuánto es " + num1 + " más " + num2 + "?";
+        respuestaCorrecta = "la respuesta es" + (num1 + num2) + ".";
+    } else if (operacion == "resta") {
+        pregunta = "¿Cuánto es " + num1 + " menos " + num2 + "?";
+        respuestaCorrecta = "la respuesta es " + (num1 - num2) + ".";
+    } else if (operacion == "multiplicación") {
+        pregunta = "¿Cuánto es " + num1 + " por " + num2 + "?";
+        respuestaCorrecta = "la respuesta es " + (num1 * num2) + ".";
+    } else if (operacion == "división") {
+        var producto = num1 * num2;
+        pregunta = "Si tienes " + producto + " manzanas y las quieres dividir en " + num1 + " grupos iguales, ¿cuántas manzanas hay en cada grupo?";
+        respuestaCorrecta = "la respuesta es " + num2 + ".";
+    }
+
+    document.getElementById("pregunta").innerHTML = pregunta;
+    responsiveVoice.speak(pregunta, idioma);
+}
+
+// Responder a la pregunta
+function responder() {
+    var respuestaUsuario = document.getElementById("respuesta").value;
+
+    if (respuestaUsuario == respuestaCorrecta.toLowerCase()) {
+        document.getElementById("respuesta-respuesta").innerHTML = "¡Correcto! " + respuestaCorrecta;
+        responsiveVoice.speak("¡Correcto! " + respuestaCorrecta, idioma);
+    } else {
+        document.getElementById("respuesta-respuesta").innerHTML = "Incorrecto. La respuesta es " + respuestaCorrecta;
+        responsiveVoice.speak("Incorrecto. La respuesta es " + respuestaCorrecta, idioma);
+    }
+}
+
+// Cambiar idioma de Megan
+function cambiarIdioma() {
+    idioma = document.getElementById("select-idioma").value;
+    alert("Idioma cambiado a " + idioma);
+}
+</script>
+
+
+</body>
+</html>
